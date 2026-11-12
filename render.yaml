@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: angomall
+    runtime: docker
+    plan: starter
+    healthCheckPath: /api/health
+    envVars:
+      - key: ANGOMALL_DB
+        value: /data/angomall.sqlite3
+      - key: COOKIE_SECURE
+        value: "1"
+      - key: PORT
+        value: "8000"
+    disk:
+      name: angomall-data
+      mountPath: /data
+      sizeGB: 1
